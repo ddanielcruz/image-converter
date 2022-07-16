@@ -15,7 +15,12 @@
     "url": "https://github.com/ddanielcruz/image-converter/issues"
   },
   "homepage": "https://github.com/ddanielcruz/image-converter#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.4"
+  },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "eslint": "^8.19.0",
