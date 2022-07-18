@@ -5,9 +5,15 @@
 import { Config } from 'jest'
 
 export default {
+  preset: 'ts-jest',
   clearMocks: true,
   coverageProvider: 'v8',
-  preset: 'ts-jest',
-  globalSetup: '<rootDir>/src/tests/setup.ts',
-  globalTeardown: '<rootDir>/src/tests/teardown.ts'
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['packages/**/*.{ts,tsx,js,jsx}'],
+  coveragePathIgnorePatterns: ['jest.config.ts', '/node_modules/', '/dist/'],
+  moduleNameMapper: {
+    '^@image-converter/(.*)$': '<rootDir>/packages/$1/'
+  },
+  globalSetup: '<rootDir>/tests/setup.ts',
+  globalTeardown: '<rootDir>/tests/teardown.ts'
 } as Config

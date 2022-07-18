@@ -1,0 +1,15 @@
+{
+  "name": "@image-converter/tests",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "compile": "rm -rf dist && tsc"
+  },
+  "dependencies": {
+    "mongoose": "^6.4.5"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
+  }
+}
