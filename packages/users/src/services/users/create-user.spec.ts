@@ -1,16 +1,16 @@
-import * as database from '../../tests/database'
+import { mongoose } from '@image-converter/tests'
 
 describe('CreateUser', () => {
   beforeAll(() => {
-    return database.connect('create-user')
+    return mongoose.connect('create-user')
   })
 
   beforeEach(() => {
-    return database.reset()
+    return mongoose.reset()
   })
 
   afterAll(() => {
-    return database.disconnect()
+    return mongoose.disconnect()
   })
 
   it('should do something', async () => {
