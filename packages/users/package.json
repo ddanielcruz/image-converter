@@ -1,0 +1,9 @@
+{
+  "name": "@image-converter/users",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:server": "tsnd --transpile-only --ignore-watch node_modules src/server"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
