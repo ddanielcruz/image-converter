@@ -5,8 +5,9 @@ declare global {
   var __MONGO: MongoMemoryServer
 }
 
-export = async function globalSetup() {
+export default async function globalSetup() {
   const instance = await MongoMemoryServer.create()
   global.__MONGO = instance
   process.env.MONGO_URL = instance.getUri()
+  console.log(process.env.MONGO_URL)
 }

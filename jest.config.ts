@@ -4,7 +4,6 @@
  */
 import { Config } from 'jest'
 
-// TODO: Add Mongo temporary server setup
 export default {
   preset: 'ts-jest',
   clearMocks: true,
@@ -14,5 +13,7 @@ export default {
   coveragePathIgnorePatterns: ['jest.config.ts', '/node_modules/', '/dist/'],
   moduleNameMapper: {
     '^@image-converter/(.*)$': '<rootDir>/packages/$1/'
-  }
+  },
+  globalSetup: '<rootDir>/tests/setup.ts',
+  globalTeardown: '<rootDir>/tests/teardown.ts'
 } as Config

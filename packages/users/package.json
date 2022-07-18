@@ -4,6 +4,11 @@
   "scripts": {
     "dev:server": "tsnd --transpile-only --ignore-watch node_modules src/server"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.5"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
+  }
 }
