@@ -1,0 +1,12 @@
+# Build image
+FROM node:16-alpine
+
+# Create app directory
+WORKDIR /root/app
+
+# Copy projects and install dependencies
+COPY . .
+RUN npm install && npm run compile -w @image-converter/tests
+
+# Start the project
+CMD ["npm", "run", "dev", "-w", "@image-converter/users"]
