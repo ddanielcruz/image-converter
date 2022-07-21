@@ -6,7 +6,7 @@ WORKDIR /root/app
 
 # Copy projects and install dependencies
 COPY . .
-RUN npm ci
+RUN npm install && npm run compile -w @image-converter/tests
 
 # Start the project
 CMD ["npm", "run", "dev", "-w", "@image-converter/users"]
