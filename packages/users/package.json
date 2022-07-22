@@ -5,6 +5,7 @@
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server"
   },
   "dependencies": {
+    "@image-converter/shared": "^1.0.0",
     "dotenv": "^16.0.1",
     "joi": "^17.6.0",
     "mongoose": "^6.4.5"

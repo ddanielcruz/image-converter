@@ -1,0 +1,12 @@
+{
+  "name": "@image-converter/shared",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "compile": "rm -rf dist && tsc"
+  },
+  "devDependencies": {
+    "@image-converter/tests": "^1.0.0"
+  }
+}
