@@ -9,7 +9,7 @@ export default {
   clearMocks: true,
   coverageProvider: 'v8',
   coverageDirectory: 'coverage',
-  collectCoverageFrom: ['packages/**/*.{ts,tsx,js,jsx}'],
+  collectCoverageFrom: ['packages/**/*.{ts,tsx,js,jsx}', '!packages/tests/**'],
   coveragePathIgnorePatterns: ['jest.config.ts', '/node_modules/', '/dist/'],
   moduleNameMapper: {
     '^@image-converter/(.*)$': '<rootDir>/packages/$1/'
