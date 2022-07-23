@@ -31,6 +31,13 @@ describe('FieldError', () => {
       expect(errors[0]).toEqual({ field: 'email', message: expect.any(String) })
     })
 
+    it('sets error label as unknown when it does not have a context', () => {
+      const { error } = validator.validate({ email: 'invalid-email' })
+      error!.details[0].context = undefined
+      const errors = FieldError.generate(error)
+      expect(errors[0].field).toBe('unknown')
+    })
+
     it('returns empty list on empty validation result', () => {
       const { error } = validator.validate({ email: 'daniel@example.com' })
       const errors = FieldError.generate(error)

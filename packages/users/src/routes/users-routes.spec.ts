@@ -37,9 +37,9 @@ describe('/api/users', () => {
   })
 
   describe('POST /authenticate', () => {
-    it.each(['wrong-email', ''])(
+    it.each(['wrong-email', '', undefined])(
       'returns 401 on invalid credentials: %s',
-      async (email: string) => {
+      async (email: any) => {
         await request(api).post('/api/users/authenticate').send({ email }).expect(401)
       }
     )
