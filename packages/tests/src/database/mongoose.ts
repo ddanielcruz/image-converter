@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export async function connect(database: string) {
-  const url = `${process.env.MONGO_URL}${database}`
+  const url = `${process.env.MONGO_URI}${database}`
   await mongoose.connect(url)
 }
 
