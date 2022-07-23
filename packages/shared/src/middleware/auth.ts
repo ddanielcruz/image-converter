@@ -7,7 +7,12 @@ export interface ISession {
   id: string
 }
 
-// TODO: Implement automated test for auth middleware
+declare module 'express' {
+  interface Request {
+    session?: ISession
+  }
+}
+
 export const auth = (request: Request, _response: Response, next: NextFunction) => {
   const token = request.header('x-access-token')?.toString()
   if (!token) {
@@ -15,7 +20,7 @@ export const auth = (request: Request, _response: Response, next: NextFunction) 
   }
 
   try {
-    request.session = jwt.verify(token, '') as ISession
+    request.session = jwt.verify(token, process.env.JWT_KEY!) as ISession
     return next()
   } catch (error) {
     throw new UnauthorizedError('Invalid token.')

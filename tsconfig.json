@@ -7,5 +7,5 @@
   "include": [
     "./packages/*/**.ts",
     "jest.config.ts"
-  ]
+  ],
 }
