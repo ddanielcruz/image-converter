@@ -8,9 +8,11 @@
     "@image-converter/shared": "^1.0.0",
     "dotenv": "^16.0.1",
     "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.5"
   },
   "devDependencies": {
-    "@image-converter/tests": "^1.0.0"
+    "@image-converter/tests": "^1.0.0",
+    "@types/jsonwebtoken": "^8.5.8"
   }
 }
