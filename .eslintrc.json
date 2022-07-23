@@ -59,6 +59,7 @@
             2
         ],
         "@typescript-eslint/no-non-null-assertion": "off",
-        "no-new": "off"
+        "no-new": "off",
+        "@typescript-eslint/no-namespace": "off"
     }
 }

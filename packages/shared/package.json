@@ -11,7 +11,6 @@
     "joi": "^17.6.0"
   },
   "devDependencies": {
-    "@image-converter/tests": "^1.0.0",
-    "@types/express": "^4.17.13"
+    "@image-converter/tests": "^1.0.0"
   }
 }

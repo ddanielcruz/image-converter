@@ -7,14 +7,16 @@ export interface ISession {
   id: string
 }
 
-declare module 'express' {
-  interface Request {
-    session?: ISession
+declare global {
+  namespace Express {
+    interface Request {
+      session?: ISession
+    }
   }
 }
 
 export const auth = (request: Request, _response: Response, next: NextFunction) => {
-  const token = request.header('x-access-token')?.toString()
+  const [, token] = (request.headers.authorization?.toString() || '').split(' ')
   if (!token) {
     throw new UnauthorizedError('Token not found.')
   }
