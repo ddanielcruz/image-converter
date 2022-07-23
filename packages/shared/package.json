@@ -6,6 +6,9 @@
   "scripts": {
     "compile": "rm -rf dist && tsc"
   },
+  "dependencies": {
+    "joi": "^17.6.0"
+  },
   "devDependencies": {
     "@image-converter/tests": "^1.0.0"
   }
