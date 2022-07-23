@@ -1,3 +1,4 @@
+import { ValidationError } from '@image-converter/shared'
 import { mongoose } from '@image-converter/tests'
 
 import { User } from '../../database/models'
@@ -28,7 +29,7 @@ describe('CreateUser', () => {
     async email => {
       const { sut } = makeSut()
       const promise = sut.execute({ email })
-      await expect(promise).rejects.toThrow()
+      await expect(promise).rejects.toThrow(ValidationError)
     }
   )
 
@@ -36,7 +37,7 @@ describe('CreateUser', () => {
     const { sut, data } = makeSut()
     await User.create(data)
     const promise = sut.execute(data)
-    await expect(promise).rejects.toThrow()
+    await expect(promise).rejects.toThrow(ValidationError)
   })
 
   it('should create an user', async () => {
