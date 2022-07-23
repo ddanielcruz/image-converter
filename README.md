@@ -1,6 +1,12 @@
-# Image Converter
+<div align="center">
+  <h1>:camera: image-converter</h1>
+  
+  <p>Image converter application, developed to study microservices and webhooks implementation</p>
 
-An image converter application, developed to study parallel processing and webhooks implementation.
+  <p align="center">
+    <a href='https://coveralls.io/github/ddanielcruz/image-converter'><img src='https://coveralls.io/repos/github/ddanielcruz/image-converter/badge.svg' alt='Coverage Status'></a>
+  </p>
+</div>
 
 ## License
 
