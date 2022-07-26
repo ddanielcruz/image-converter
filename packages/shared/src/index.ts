@@ -1,3 +1,5 @@
+export * as mongoose from './database/mongoose'
+
 export * from './errors/bad-request-error'
 export * from './errors/custom-error'
 export * from './errors/internal-server-error'

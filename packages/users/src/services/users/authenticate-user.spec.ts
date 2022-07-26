@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { UnauthorizedError } from '@image-converter/shared'
 import { mongoose } from '@image-converter/tests'
 
-import { User } from '../../database/models'
+import { User } from '../../models'
 import { AuthenticateUser } from './authenticate-user'
 
 jwt.sign = jest.fn().mockReturnValue('any-token')

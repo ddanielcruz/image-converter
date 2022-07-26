@@ -3,7 +3,7 @@ import request from 'supertest'
 import { mongoose } from '@image-converter/tests'
 
 import { api } from '../api'
-import { User } from '../database/models'
+import { User } from '../models'
 
 process.env.JWT_KEY = 'any-secret'
 

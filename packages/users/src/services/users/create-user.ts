@@ -2,7 +2,7 @@ import Joi from 'joi'
 
 import { FieldError } from '@image-converter/shared'
 
-import { User } from '../../database/models'
+import { User } from '../../models'
 
 export interface ICreateUserData {
   email: string

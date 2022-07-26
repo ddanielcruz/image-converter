@@ -1,7 +1,7 @@
 import 'dotenv/config'
+import { mongoose as database } from '@image-converter/shared'
 
 import { api } from './api'
-import * as database from './database'
 
 async function bootstrap() {
   for (const key of ['JWT_KEY', 'MONGO_URI']) {
