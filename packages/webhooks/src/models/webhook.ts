@@ -1,6 +1,6 @@
 import { Types, Schema, Document, model } from 'mongoose'
 
-interface IAuthentication {
+export interface IAuthentication {
   method: 'basic' | 'bearer'
   credentials: string
 }

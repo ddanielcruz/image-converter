@@ -5,7 +5,8 @@
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/index.ts"
   },
   "dependencies": {
-    "@image-converter/shared": "^1.0.0"
+    "@image-converter/shared": "^1.0.0",
+    "joi": "^17.6.0"
   },
   "devDependencies": {
     "@image-converter/tests": "^1.0.0"
