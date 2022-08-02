@@ -13,7 +13,8 @@ export default {
     'packages/**/*.{ts,tsx,js,jsx}',
     '!packages/tests/**',
     '!packages/**/src/index.ts',
-    '!packages/shared/src/**/index.ts'
+    '!packages/shared/src/**/index.ts',
+    '!packages/shared/src/messaging/events/**'
   ],
   coveragePathIgnorePatterns: ['jest.config.ts', '/node_modules/', '/dist/'],
   moduleNameMapper: {

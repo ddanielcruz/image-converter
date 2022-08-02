@@ -1,21 +1,21 @@
 import { Topics } from '../topics'
 
-interface IWebhook {
+export interface IWebhookData {
   id: string
 }
 
 export interface IWebhookCreatedEvent {
-  subject: Topics.WebhookCreated
-  data: IWebhook
+  topic: Topics.WebhookCreated
+  data: IWebhookData
 }
 
 export interface IWebhookUpdatedEvent {
-  subject: Topics.WebhookUpdated
-  data: IWebhook
+  topic: Topics.WebhookUpdated
+  data: IWebhookData
 }
 
 export interface IWebhookDeletedEvent {
-  subject: Topics.WebhookDeleted
+  topic: Topics.WebhookDeleted
   data: {
     id: string
   }
