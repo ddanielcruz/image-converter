@@ -3,6 +3,7 @@ import { isObjectIdOrHexString } from 'mongoose'
 
 import { FieldError } from '@image-converter/shared'
 
+import { WebhookCreatedPublisher } from '../../messaging/publishers/webhook-created-publisher'
 import { IAuthentication, IWebhookDoc, Webhook } from '../../models'
 
 export interface ICreateWebhookData {
@@ -21,6 +22,8 @@ const validator = Joi.object<ICreateWebhookData>().keys({
 })
 
 export class CreateWebhook {
+  constructor(private readonly publisher: WebhookCreatedPublisher) {}
+
   async execute(data: ICreateWebhookData): Promise<IWebhookDoc> {
     const { error, value } = validator.validate(data)
     const errors = FieldError.generate(error)
@@ -33,11 +36,13 @@ export class CreateWebhook {
       FieldError.throw(errors)
     }
 
-    // TODO: Emit event about webhook creation
-    return await Webhook.create({
+    const webhook = await Webhook.create({
       user: value!.user,
       url: value!.url,
       authentication: value!.authentication
     })
+    await this.publisher.publish(webhook.toJSON())
+
+    return webhook
   }
 }

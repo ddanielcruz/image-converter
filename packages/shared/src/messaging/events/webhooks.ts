@@ -2,6 +2,13 @@ import { Topics } from '../topics'
 
 export interface IWebhookData {
   id: string
+  user: string
+  url: string
+  authentication?: {
+    method: string
+    credentials: string
+  }
+  enabled: boolean
 }
 
 export interface IWebhookCreatedEvent {

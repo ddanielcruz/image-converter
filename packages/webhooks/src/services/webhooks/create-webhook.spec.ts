@@ -3,20 +3,30 @@ import { Types } from 'mongoose'
 import { ValidationError } from '@image-converter/shared'
 import { mongoose } from '@image-converter/tests'
 
+import { WebhookCreatedPublisher } from '../../messaging/publishers/webhook-created-publisher'
 import { IAuthentication, Webhook } from '../../models'
 import { CreateWebhook, ICreateWebhookData } from './create-webhook'
 
 const basicAuth: IAuthentication = { method: 'basic', credentials: 'any:credentials' }
 const bearerAuth: IAuthentication = { method: 'bearer', credentials: 'any-token' }
 
+const makePublisher = (): WebhookCreatedPublisher => {
+  class WebhookCreatedPublisherStub implements Partial<WebhookCreatedPublisher> {
+    publish = jest.fn()
+  }
+
+  return new WebhookCreatedPublisherStub() as any
+}
+
 const makeSut = () => {
-  const sut = new CreateWebhook()
+  const publisherStub = makePublisher()
+  const sut = new CreateWebhook(publisherStub)
   const data: ICreateWebhookData = {
     user: new Types.ObjectId().toHexString(),
     url: 'https://webhook.com'
   }
 
-  return { sut, data, basicAuth, bearerAuth }
+  return { sut, data, basicAuth, bearerAuth, publisherStub }
 }
 
 describe('CreateWebhook', () => {
@@ -63,5 +73,9 @@ describe('CreateWebhook', () => {
     }
   )
 
-  it.todo('emits a webhook.created event')
+  it('publishes a webhook.created event', async () => {
+    const { sut, data, publisherStub } = makeSut()
+    const webhook = await sut.execute(data)
+    expect(publisherStub.publish).toHaveBeenCalledWith(webhook.toJSON())
+  })
 })
