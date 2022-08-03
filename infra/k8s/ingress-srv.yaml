@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: development.com
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: users-srv
+                port:
+                  number: 3000
+          - path: /api/webhooks/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: webhooks-srv
+                port:
+                  number: 3000
