@@ -15,3 +15,10 @@ build:
         manual:
           - dest: .
             src: 'packages/users/src/**/*.ts'
+    - image: ic/webhooks
+      docker:
+        dockerfile: packages/webhooks/Dockerfile.development
+      sync:
+        manual:
+          - dest: .
+            src: 'packages/webhooks/src/**/*.ts'

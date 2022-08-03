@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhooks-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhooks
+  template:
+    metadata:
+      labels:
+        app: webhooks
+    spec:
+      containers:
+        - name: webhooks
+          image: ic/webhooks
+          imagePullPolicy: Never
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://webhooks-mongo-srv:27017/webhooks'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhooks-srv
+spec:
+  selector:
+    app: webhooks
+  ports:
+    - name: webhooks
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
