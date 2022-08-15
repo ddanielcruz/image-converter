@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import { isObjectIdOrHexString } from 'mongoose'
 
-import { FieldError } from '@image-converter/shared'
+import { FieldError, ValidationError } from '@image-converter/shared'
 
 import { WebhookCreatedPublisher } from '../../messaging/publishers/webhook-created-publisher'
 import { IAuthentication, IWebhookDoc, Webhook } from '../../models'
@@ -13,11 +13,11 @@ export interface ICreateWebhookData {
 }
 
 const validator = Joi.object<ICreateWebhookData>().keys({
-  user: Joi.string().trim().required(),
-  url: Joi.string().trim().uri().required(),
+  user: Joi.string().trim().empty('').required(),
+  url: Joi.string().trim().empty('').uri().required(),
   authentication: Joi.object<IAuthentication>().keys({
-    method: Joi.string().trim().lowercase().valid('basic', 'bearer').required(),
-    credentials: Joi.string().trim().required()
+    method: Joi.string().trim().empty('').lowercase().valid('basic', 'bearer').required(),
+    credentials: Joi.string().trim().empty('').required()
   })
 })
 
@@ -33,7 +33,7 @@ export class CreateWebhook {
     }
 
     if (errors.length) {
-      FieldError.throw(errors)
+      throw new ValidationError(errors)
     }
 
     const webhook = await Webhook.create({

@@ -15,10 +15,6 @@ export class FieldError {
   static includes(errors: FieldError[], ...properties: string[]): boolean {
     return errors.some(error => properties.includes(error.field))
   }
-
-  static throw(errors: FieldError[]) {
-    throw new ValidationError(errors)
-  }
 }
 
 export class ValidationError extends CustomError {
