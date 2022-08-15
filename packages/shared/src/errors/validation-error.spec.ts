@@ -70,11 +70,4 @@ describe('FieldError', () => {
       expect(FieldError.includes(errors, properties[0])).toBe(false)
     })
   })
-
-  describe('throw', () => {
-    it('should throw a validation error', () => {
-      const errors = [new FieldError('any-field', 'any-message')]
-      expect(() => FieldError.throw(errors)).toThrow(ValidationError)
-    })
-  })
 })

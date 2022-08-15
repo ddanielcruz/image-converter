@@ -1,7 +1,7 @@
 import { ValidationError } from '@image-converter/shared'
 import { mongoose } from '@image-converter/tests'
 
-import { User } from '../../database/models'
+import { User } from '../../models'
 import { CreateUser, ICreateUserData } from './create-user'
 
 const makeSut = () => {

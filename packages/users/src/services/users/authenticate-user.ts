@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 
 import { UnauthorizedError, ISession } from '@image-converter/shared'
 
-import { User } from '../../database/models'
+import { User } from '../../models'
 
 export class AuthenticateUser {
   constructor(private readonly secret: string) {}

@@ -2,7 +2,7 @@ import { Types } from 'mongoose'
 
 import { mongoose } from '@image-converter/tests'
 
-import { User } from '../../database/models'
+import { User } from '../../models'
 import { FindUser } from './find-user'
 
 const makeSut = async () => {
