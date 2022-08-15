@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { mongoose as database } from '@image-converter/shared'
+import { mongoose as database, logger } from '@image-converter/shared'
 
 import { api } from './api'
 
@@ -13,7 +13,7 @@ async function bootstrap() {
   await database.connect()
 
   const { PORT = '3000' } = process.env
-  api.listen(PORT, () => console.log(`Users service is running on port ${PORT}`))
+  api.listen(PORT, () => logger.info(`Users service is running on port ${PORT}`))
 }
 
 bootstrap()
